@@ -87,7 +87,8 @@ class Dev(Configuration):
         'crispy_forms',
         'crispy_bootstrap5',
         'debug_toolbar',
-        'blog'
+        'blango_auth',
+        'blog',
     ]
 
     CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -155,6 +156,8 @@ class Dev(Configuration):
             'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
         },
     ]
+
+    AUTH_USER_MODEL = "blango_auth.User"
 
 
     # Internationalization
