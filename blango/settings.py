@@ -149,12 +149,12 @@ class Dev(Configuration):
     # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
     DATABASES = {
-      "default": dj_database_url.config(default=f"sqlite:///{BASE_DIR}/db.sqlite3"),
-      "alternative": dj_database_url.config(
-          "ALTERNATIVE_DATABASE_URL",
-          default=f"sqlite:///{BASE_DIR}/alternative_db.sqlite3",
-      ),
-  }
+        "default": dj_database_url.config(default=f"sqlite:///{BASE_DIR}/db.sqlite3"),
+        "alternative": dj_database_url.config(
+            "ALTERNATIVE_DATABASE_URL",
+            default=f"sqlite:///{BASE_DIR}/alternative_db.sqlite3",
+        ),
+    }
 
     # Password validation
     # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -200,3 +200,10 @@ class Dev(Configuration):
     # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
     DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+    SWAGGER_SETTINGS = {
+        "SECURITY_DEFINITIONS": {
+            "Token": {"type": "apiKey", "name": "Authorization", "in": "header"},
+            "Basic": {"type": "basic"},
+        }
+    }
