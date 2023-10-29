@@ -8,16 +8,20 @@ import logging
 logger = logging.getLogger(__name__)
 
 def index(request):
-  posts = Post.objects\
-    .filter(published_at__lte=timezone.now())\
-    .select_related("author")
+    posts = Post.objects\
+      .filter(published_at__lte=timezone.now())\
+      .select_related("author")
 
-  logger.debug("Got %d posts", len(posts))
-  return render(request, "blog/index.html", {"posts": posts})
+    logger.debug("Got %d posts", len(posts))
+    return render(request, "blog/index.html", {"posts": posts})
 
 def get_ip(request):
-  from django.http import HttpResponse
-  return HttpResponse(request.META['REMOTE_ADDR'])
+    from django.http import HttpResponse
+    return HttpResponse(request.META['REMOTE_ADDR'])
+
+def post_table(request):
+    print("RENDERING VIEW")
+    return render(request, "blog/post-table.html")
 
 def post_detail(request, slug):
     post = get_object_or_404(Post, slug=slug)
