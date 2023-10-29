@@ -77,7 +77,8 @@ class Dev(Configuration):
     SESSION_COOKIE_SECURE = True
     SESSION_COOKIE_SAMESITE = None
 
-
+    MEDIA_ROOT = BASE_DIR / "media"
+    MEDIA_URL = "/media/"
     # Application definition
 
     INSTALLED_APPS = [
@@ -90,6 +91,7 @@ class Dev(Configuration):
         'rest_framework',
         'rest_framework.authtoken',
         'django_filters',
+        'versatileimagefield',
         'crispy_forms',
         'crispy_bootstrap5',
         'debug_toolbar',
